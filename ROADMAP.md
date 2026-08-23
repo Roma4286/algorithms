@@ -13,7 +13,7 @@ Format for each topic: theory → implement the data structure in this repo → 
 
 ## Block 1. Warm-up: Two Pointers, Sliding Window, Prefix Sums (~5–6 h)
 
-No data structures here — pure techniques. Some of these may be review; re-solve from memory.
+No data structures here — pure techniques.
 
 **Theory:** when each pattern applies (sorted input → two pointers; subarray/substring → sliding window; range sums → prefix sums).
 
@@ -33,6 +33,8 @@ src/algorithms/prefix-sum/
 ├── subarray-sum-equals-k.ts
 └── product-of-array-except-self.ts
 ```
+
+**LeetCode to verify:** submit the problems solved in the repo — Move Zeroes (easy), Two Sum II — Input Array Is Sorted (medium), 3Sum (medium), Container With Most Water (medium); Best Time to Buy and Sell Stock (easy), Longest Substring Without Repeating Characters (medium), Permutation in String (medium); Range Sum Query — Immutable (easy), Subarray Sum Equals K (medium), Product of Array Except Self (medium).
 
 **Block is done when:** you recognize the pattern from the problem statement before writing any code.
 
