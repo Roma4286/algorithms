@@ -1,4 +1,4 @@
-# Algorithms & Data Structures in TypeScript — Study Checklist (~60–70 hours)
+# Algorithms & Data Structures in Python — Study Checklist (~60–70 hours)
 
 Format for each topic: theory → implement the data structure in this repo → solve problems as files in this repo → verify on LeetCode. Blocks must be completed strictly in order (they are arranged by dependency).
 
@@ -6,7 +6,7 @@ Format for each topic: theory → implement the data structure in this repo → 
 
 - [ ] **The 30-minute rule:** stuck with no progress — watch an explanation (NeetCode), mark the problem, and re-solve it from scratch 3–4 days later
 - [ ] Implementing a structure should take 1–2 evenings max: core operations only, no API polishing. Roughly 30% of time on implementations, 70% on problems
-- [ ] Solve each problem as a file in the repo first (with a sample call at the bottom, run via `npx tsx src/...`), then submit on LeetCode to verify
+- [ ] Solve each problem as a file in the repo first (with a sample call at the bottom, run via `python -m algorithms...` or `python -m data_structures...`), then submit on LeetCode to verify
 - [ ] Keep a log: problem / solved on my own or with help / re-solve date
 
 ---
@@ -19,19 +19,19 @@ No data structures here — pure techniques.
 
 **Repo output:**
 ```
-src/algorithms/two-pointers/
-├── two-sum-sorted.ts
-├── three-sum.ts
-├── container-with-most-water.ts
-└── move-zeroes.ts
-src/algorithms/sliding-window/
-├── best-time-to-buy-sell-stock.ts
-├── longest-substring-no-repeat.ts
-└── permutation-in-string.ts
-src/algorithms/prefix-sum/
-├── range-sum-query.ts
-├── subarray-sum-equals-k.ts
-└── product-of-array-except-self.ts
+algorithms/two_pointers/
+├── two_sum_sorted.py
+├── three_sum.py
+├── container_with_most_water.py
+└── move_zeroes.py
+algorithms/sliding_window/
+├── best_time_to_buy_sell_stock.py
+├── longest_substring_no_repeat.py
+└── permutation_in_string.py
+algorithms/prefix_sum/
+├── range_sum_query.py
+├── subarray_sum_equals_k.py
+└── product_of_array_except_self.py
 ```
 
 **LeetCode to verify:** submit the problems solved in the repo — Move Zeroes (easy), Two Sum II — Input Array Is Sorted (medium), 3Sum (medium), Container With Most Water (medium); Best Time to Buy and Sell Stock (easy), Longest Substring Without Repeating Characters (medium), Permutation in String (medium); Range Sum Query — Immutable (easy), Subarray Sum Equals K (medium), Product of Array Except Self (medium).
@@ -48,13 +48,13 @@ src/algorithms/prefix-sum/
 
 **Repo output:**
 ```
-src/data-structures/stack/
-├── Stack.ts
+data_structures/stack/
+├── Stack.py
 └── problems/
-    ├── valid-parentheses.ts
-    ├── min-stack.ts
-    ├── evaluate-rpn.ts
-    └── daily-temperatures.ts      # monotonic stack
+    ├── valid_parentheses.py
+    ├── min_stack.py
+    ├── evaluate_rpn.py
+    └── daily_temperatures.py      # monotonic stack
 ```
 
 **LeetCode to verify:** submit the problems solved in the repo — Valid Parentheses (easy), Min Stack (medium), Evaluate Reverse Polish Notation (medium), Daily Temperatures (medium). If it felt easy — additionally Car Fleet (medium).
@@ -71,12 +71,12 @@ src/data-structures/stack/
 
 **Repo output:**
 ```
-src/data-structures/queue/
-├── Queue.ts
+data_structures/queue/
+├── Queue.py
 └── problems/
-    ├── queue-using-stacks.ts
-    ├── recent-counter.ts
-    └── sliding-window-maximum.ts   # deque, medium/hard — OK to solve with help
+    ├── queue_using_stacks.py
+    ├── recent_counter.py
+    └── sliding_window_maximum.py   # deque, medium/hard — OK to solve with help
 ```
 
 **Block is done when:** you can explain why BFS needs a queue (you'll use this in Blocks 10 and 13).
@@ -91,15 +91,15 @@ src/data-structures/queue/
 
 **Repo output:**
 ```
-src/data-structures/linked-list-singly/
-├── SinglyLinkedList.ts
+data_structures/linked_list_singly/
+├── SinglyLinkedList.py
 └── problems/
-    ├── reverse-list.ts             # iterative AND recursive, two functions
-    ├── find-middle.ts              # fast/slow
-    ├── merge-two-sorted-lists.ts
-    ├── has-cycle.ts                # Floyd's algorithm
-    ├── remove-nth-from-end.ts
-    └── reorder-list.ts             # medium, combines middle + reverse + merge
+    ├── reverse_list.py             # iterative AND recursive, two functions
+    ├── find_middle.py              # fast/slow
+    ├── merge_two_sorted_lists.py
+    ├── has_cycle.py                # Floyd's algorithm
+    ├── remove_nth_from_end.py
+    └── reorder_list.py             # medium, combines middle + reverse + merge
 ```
 
 **Block is done when:** you write reverse-list in 5 minutes with no mistakes; you solved reorder-list by spotting the three previous problems inside it.
@@ -114,11 +114,11 @@ src/data-structures/linked-list-singly/
 
 **Repo output:**
 ```
-src/data-structures/linked-list-doubly/
-├── DoublyLinkedList.ts
+data_structures/linked_list_doubly/
+├── DoublyLinkedList.py
 └── problems/
-    ├── browser-history.ts
-    └── lru-cache.ts                # medium, the key problem: DLL + Map
+    ├── browser_history.py
+    └── lru_cache.py                # medium, the key problem: DLL + Map
 ```
 
 **Block is done when:** you implemented an LRU cache and can explain why a doubly linked list is exactly what makes every operation O(1).
@@ -133,12 +133,12 @@ src/data-structures/linked-list-doubly/
 
 **Repo output:**
 ```
-src/data-structures/hash-table/
-├── HashTable.ts
+data_structures/hash_table/
+├── HashTable.py
 └── problems/
-    ├── first-unique-char.ts
-    ├── group-anagrams.ts           # re-solve using your own HashTable, for fun
-    └── longest-consecutive-sequence.ts   # medium
+    ├── first_unique_char.py
+    ├── group_anagrams.py           # re-solve using your own HashTable, for fun
+    └── longest_consecutive_sequence.py   # medium
 ```
 
 **Block is done when:** you can narrate what happens on `map.set(key, value)` all the way down to a collision.
@@ -153,10 +153,10 @@ The gateway to trees, graphs, backtracking, and DP. "Grokking Algorithms", ch. 3
 
 **Repo output:**
 ```
-src/algorithms/recursion/
-├── fibonacci.ts                    # naive and memoized versions side by side, with a comment on the difference
-├── pow.ts                          # fast exponentiation
-└── sum-nested.ts                   # sum of an arbitrarily nested array
+algorithms/recursion/
+├── fibonacci.py                    # naive and memoized versions side by side, with a comment on the difference
+├── pow.py                          # fast exponentiation
+└── sum_nested.py                   # sum of an arbitrarily nested array
 ```
 
 **Block is done when:** for any recursive function you can immediately name the base case and the stack depth.
@@ -169,14 +169,14 @@ src/algorithms/recursion/
 
 **Repo output:**
 ```
-src/algorithms/searching/
-├── linear-search.ts
-├── binary-search.ts                # reference implementation, know it by heart
+algorithms/searching/
+├── linear_search.py
+├── binary_search.py                # reference implementation, know it by heart
 └── problems/
-    ├── search-insert-position.ts
-    ├── find-min-rotated.ts
-    ├── search-rotated.ts
-    └── koko-bananas.ts             # binary search on the answer
+    ├── search_insert_position.py
+    ├── find_min_rotated.py
+    ├── search_rotated.py
+    └── koko_bananas.py             # binary search on the answer
 ```
 
 **Block is done when:** you understand why koko-bananas is binary search even though nothing is sorted.
@@ -189,15 +189,15 @@ src/algorithms/searching/
 
 **Repo output:**
 ```
-src/algorithms/sorting/
-├── bubble-sort.ts
-├── selection-sort.ts
-├── insertion-sort.ts
-├── merge-sort.ts                   # the main one: implement carefully
-├── quick-sort.ts
+algorithms/sorting/
+├── bubble_sort.py
+├── selection_sort.py
+├── insertion_sort.py
+├── merge_sort.py                   # the main one: implement carefully
+├── quick_sort.py
 └── problems/
-    ├── sort-colors.ts              # Dutch national flag
-    └── merge-intervals.ts
+    ├── sort_colors.py              # Dutch national flag
+    └── merge_intervals.py
 ```
 
 **Block is done when:** you can trace merge sort on paper for an 8-element array and name the complexity of every sort you wrote without looking.
@@ -212,16 +212,16 @@ src/algorithms/sorting/
 
 **Repo output:**
 ```
-src/data-structures/binary-tree/
-├── TreeNode.ts
-├── traversals.ts                   # preorder, inorder, postorder (recursive), levelOrder (with a queue)
+data_structures/binary_tree/
+├── TreeNode.py
+├── traversals.py                   # preorder, inorder, postorder (recursive), levelOrder (with a queue)
 └── problems/
-    ├── max-depth.ts
-    ├── invert-tree.ts
-    ├── same-tree.ts
-    ├── subtree-of-another.ts
-    ├── level-order-traversal.ts
-    └── diameter-of-tree.ts
+    ├── max_depth.py
+    ├── invert_tree.py
+    ├── same_tree.py
+    ├── subtree_of_another.py
+    ├── level_order_traversal.py
+    └── diameter_of_tree.py
 ```
 
 **Block is done when:** you write any traversal without thinking; level-order uses your own queue from Block 3.
@@ -236,12 +236,12 @@ src/data-structures/binary-tree/
 
 **Repo output:**
 ```
-src/data-structures/bst/
-├── BST.ts
+data_structures/bst/
+├── BST.py
 └── problems/
-    ├── validate-bst.ts
-    ├── kth-smallest.ts
-    └── lowest-common-ancestor.ts
+    ├── validate_bst.py
+    ├── kth_smallest.py
+    └── lowest_common_ancestor.py
 ```
 
 **Block is done when:** you solved validate-bst with the min/max bounds approach, not just via in-order, and understand both.
@@ -256,13 +256,13 @@ src/data-structures/bst/
 
 **Repo output:**
 ```
-src/data-structures/heap/
-├── MinHeap.ts
+data_structures/heap/
+├── MinHeap.py
 └── problems/
-    ├── last-stone-weight.ts
-    ├── kth-largest-element.ts
-    ├── k-closest-points.ts
-    └── top-k-frequent.ts           # re-solve using your own heap
+    ├── last_stone_weight.py
+    ├── kth_largest_element.py
+    ├── k_closest_points.py
+    └── top_k_frequent.py           # re-solve using your own heap
 ```
 
 **Block is done when:** you can derive the index formulas unaided and explain why insertion is O(log n).
@@ -275,22 +275,22 @@ The biggest topic — don't rush it. "Grokking Algorithms", ch. 6.
 
 **Theory:** adjacency list vs matrix; directed/weighted; a grid as a graph; BFS vs DFS — when to use which; topological sort (Kahn's algorithm); Dijkstra — idea only, implementation optional.
 
-**Implementation:** `Graph` on an adjacency list: `addVertex`, `addEdge`, plus standalone `bfs.ts` and `dfs.ts` as reference templates.
+**Implementation:** `Graph` on an adjacency list: `addVertex`, `addEdge`, plus standalone `bfs.py` and `dfs.py` as reference templates.
 
 **Repo output:**
 ```
-src/data-structures/graph/
-├── Graph.ts
-├── bfs.ts                          # reference template, memorize
-├── dfs.ts                          # reference template, memorize
-├── topological-sort.ts
+data_structures/graph/
+├── Graph.py
+├── bfs.py                          # reference template, memorize
+├── dfs.py                          # reference template, memorize
+├── topological_sort.py
 └── problems/
-    ├── number-of-islands.ts        # the key problem of the block
-    ├── max-area-of-island.ts
-    ├── rotting-oranges.ts          # level-by-level BFS
-    ├── clone-graph.ts
-    ├── course-schedule.ts          # topological sort
-    └── pacific-atlantic.ts
+    ├── number_of_islands.py        # the key problem of the block
+    ├── max_area_of_island.py
+    ├── rotting_oranges.py          # level-by-level BFS
+    ├── clone_graph.py
+    ├── course_schedule.py          # topological sort
+    └── pacific_atlantic.py
 ```
 
 **Block is done when:** number-of-islands and course-schedule are solved on your own; you can justify the BFS vs DFS choice for every problem in the block.
@@ -303,14 +303,14 @@ src/data-structures/graph/
 
 **Repo output:**
 ```
-src/algorithms/greedy/
-├── max-subarray.ts                 # Kadane
-└── jump-game.ts
-src/algorithms/backtracking/
-├── subsets.ts
-├── permutations.ts
-├── combination-sum.ts
-└── word-search.ts
+algorithms/greedy/
+├── max_subarray.py                 # Kadane
+└── jump_game.py
+algorithms/backtracking/
+├── subsets.py
+├── permutations.py
+├── combination_sum.py
+└── word_search.py
 ```
 
 **Block is done when:** you write the backtracking template from memory and understand why the undo step exists.
@@ -325,15 +325,15 @@ The hardest part — going slowly is normal. "Grokking Algorithms", ch. 9 + Neet
 
 **Repo output:**
 ```
-src/algorithms/dynamic-programming/
-├── climbing-stairs.ts
-├── min-cost-climbing-stairs.ts
-├── house-robber.ts
-├── house-robber-2.ts
-├── coin-change.ts
-├── longest-increasing-subsequence.ts
-├── unique-paths.ts                 # 2-D
-└── longest-common-subsequence.ts   # 2-D
+algorithms/dynamic_programming/
+├── climbing_stairs.py
+├── min_cost_climbing_stairs.py
+├── house_robber.py
+├── house_robber_2.py
+├── coin_change.py
+├── longest_increasing_subsequence.py
+├── unique_paths.py                 # 2-D
+└── longest_common_subsequence.py   # 2-D
 ```
 
 **Block is done when:** for coin-change and LCS you can state the DP state and transition in words without looking at a solution.
