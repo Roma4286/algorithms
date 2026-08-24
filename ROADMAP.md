@@ -1,12 +1,13 @@
-# Algorithms & Data Structures in Python — Study Checklist (~60–70 hours)
+# Algorithms & Data Structures — Study Checklist (~60–70 hours)
 
-Format for each topic: theory → implement the data structure in this repo → solve problems as files in this repo → verify on LeetCode. Blocks must be completed strictly in order (they are arranged by dependency).
+Format for each topic: theory → implement the data structure in this repo → solve problems as files in this repo → verify on LeetCode. Blocks must be completed strictly in order (they are arranged by dependency). The plan is language-agnostic — use whatever language you're interviewing in.
 
 ## Ground Rules
 
 - [ ] **The 30-minute rule:** stuck with no progress — watch an explanation (NeetCode), mark the problem, and re-solve it from scratch 3–4 days later
 - [ ] Implementing a structure should take 1–2 evenings max: core operations only, no API polishing. Roughly 30% of time on implementations, 70% on problems
-- [ ] Solve each problem as a file in the repo first (with a sample call at the bottom, run via `python -m algorithms...` or `python -m data_structures...`), then submit on LeetCode to verify
+- [ ] Solve each problem as a file in the repo first (with a sample call at the bottom so the file runs directly), then submit on LeetCode to verify
+- [ ] File names in the trees below have no extensions — add your language's extension
 - [ ] Keep a log: problem / solved on my own or with help / re-solve date
 
 ---
@@ -19,19 +20,19 @@ No data structures here — pure techniques.
 
 **Repo output:**
 ```
-algorithms/two_pointers/
-├── two_sum_sorted.py
-├── three_sum.py
-├── container_with_most_water.py
-└── move_zeroes.py
-algorithms/sliding_window/
-├── best_time_to_buy_sell_stock.py
-├── longest_substring_no_repeat.py
-└── permutation_in_string.py
-algorithms/prefix_sum/
-├── range_sum_query.py
-├── subarray_sum_equals_k.py
-└── product_of_array_except_self.py
+src/algorithms/two-pointers/
+├── two-sum-sorted
+├── three-sum
+├── container-with-most-water
+└── move-zeroes
+src/algorithms/sliding-window/
+├── best-time-to-buy-sell-stock
+├── longest-substring-no-repeat
+└── permutation-in-string
+src/algorithms/prefix-sum/
+├── range-sum-query
+├── subarray-sum-equals-k
+└── product-of-array-except-self
 ```
 
 **LeetCode to verify:** submit the problems solved in the repo — Move Zeroes (easy), Two Sum II — Input Array Is Sorted (medium), 3Sum (medium), Container With Most Water (medium); Best Time to Buy and Sell Stock (easy), Longest Substring Without Repeating Characters (medium), Permutation in String (medium); Range Sum Query — Immutable (easy), Subarray Sum Equals K (medium), Product of Array Except Self (medium).
@@ -44,17 +45,17 @@ algorithms/prefix_sum/
 
 **Theory:** LIFO, operation complexities, the call stack as a stack, monotonic stack.
 
-**Implementation:** `Stack<T>` backed by an array: `push`, `pop`, `peek`, `isEmpty`, `size`.
+**Implementation:** a `Stack` class backed by a dynamic array: `push`, `pop`, `peek`, `is_empty`, `size`.
 
 **Repo output:**
 ```
-data_structures/stack/
-├── Stack.py
+src/data-structures/stack/
+├── stack                      # implementation
 └── problems/
-    ├── valid_parentheses.py
-    ├── min_stack.py
-    ├── evaluate_rpn.py
-    └── daily_temperatures.py      # monotonic stack
+    ├── valid-parentheses
+    ├── min-stack
+    ├── evaluate-rpn
+    └── daily-temperatures     # monotonic stack
 ```
 
 **LeetCode to verify:** submit the problems solved in the repo — Valid Parentheses (easy), Min Stack (medium), Evaluate Reverse Polish Notation (medium), Daily Temperatures (medium). If it felt easy — additionally Car Fleet (medium).
@@ -65,18 +66,18 @@ data_structures/stack/
 
 ## Block 3. Queue (~2–3 h)
 
-**Theory:** FIFO; why `Array.prototype.shift()` is O(n) and how to avoid it (circular buffer or two stacks); deque.
+**Theory:** FIFO; why a naive array-based queue (removing from the front) costs O(n) and how to avoid it: circular buffer, two stacks, or linked nodes; deque. Also check what ready-made queue/deque your language's standard library offers.
 
-**Implementation:** `Queue<T>` on linked nodes or two stacks: `enqueue`, `dequeue`, `peek`, `isEmpty`, `size`.
+**Implementation:** a `Queue` class on linked nodes or two stacks: `enqueue`, `dequeue`, `peek`, `is_empty`, `size`.
 
 **Repo output:**
 ```
-data_structures/queue/
-├── Queue.py
+src/data-structures/queue/
+├── queue                      # implementation
 └── problems/
-    ├── queue_using_stacks.py
-    ├── recent_counter.py
-    └── sliding_window_maximum.py   # deque, medium/hard — OK to solve with help
+    ├── queue-using-stacks
+    ├── recent-counter
+    └── sliding-window-maximum # deque, medium/hard — OK to solve with help
 ```
 
 **Block is done when:** you can explain why BFS needs a queue (you'll use this in Blocks 10 and 13).
@@ -87,19 +88,19 @@ data_structures/queue/
 
 **Theory:** nodes and references; complexity comparison with arrays; fast/slow pointer technique; dummy head node.
 
-**Implementation:** `SinglyLinkedList<T>`: `pushFront`, `pushBack`, `popFront`, `insertAt`, `removeAt`, `find`, `toArray`.
+**Implementation:** a `SinglyLinkedList` class: `push_front`, `push_back`, `pop_front`, `insert_at`, `remove_at`, `find`, `to_array`.
 
 **Repo output:**
 ```
-data_structures/linked_list_singly/
-├── SinglyLinkedList.py
+src/data-structures/linked-list-singly/
+├── singly-linked-list         # implementation
 └── problems/
-    ├── reverse_list.py             # iterative AND recursive, two functions
-    ├── find_middle.py              # fast/slow
-    ├── merge_two_sorted_lists.py
-    ├── has_cycle.py                # Floyd's algorithm
-    ├── remove_nth_from_end.py
-    └── reorder_list.py             # medium, combines middle + reverse + merge
+    ├── reverse-list           # iterative AND recursive, two functions
+    ├── find-middle            # fast/slow
+    ├── merge-two-sorted-lists
+    ├── has-cycle              # Floyd's algorithm
+    ├── remove-nth-from-end
+    └── reorder-list           # medium, combines middle + reverse + merge
 ```
 
 **Block is done when:** you write reverse-list in 5 minutes with no mistakes; you solved reorder-list by spotting the three previous problems inside it.
@@ -110,15 +111,15 @@ data_structures/linked_list_singly/
 
 **Theory:** why the backward reference matters; real-world uses (browser history, LRU cache).
 
-**Implementation:** `DoublyLinkedList<T>`: `pushFront`, `pushBack`, `popFront`, `popBack`, `remove(node)` in O(1).
+**Implementation:** a `DoublyLinkedList` class: `push_front`, `push_back`, `pop_front`, `pop_back`, `remove(node)` in O(1).
 
 **Repo output:**
 ```
-data_structures/linked_list_doubly/
-├── DoublyLinkedList.py
+src/data-structures/linked-list-doubly/
+├── doubly-linked-list         # implementation
 └── problems/
-    ├── browser_history.py
-    └── lru_cache.py                # medium, the key problem: DLL + Map
+    ├── browser-history
+    └── lru-cache              # medium, the key problem: DLL + hash map
 ```
 
 **Block is done when:** you implemented an LRU cache and can explain why a doubly linked list is exactly what makes every operation O(1).
@@ -127,21 +128,21 @@ data_structures/linked_list_doubly/
 
 ## Block 6. Hash Table (~3–4 h)
 
-**Theory:** hash functions, collisions, chaining vs open addressing, why average O(1); what's under the hood of Map/Set in JS.
+**Theory:** hash functions, collisions, chaining vs open addressing, why average O(1); how your language's built-in hash map (dict/Map) works under the hood.
 
-**Implementation:** `HashTable<K, V>` with chaining: `set`, `get`, `delete`, `has`. Resizing is optional.
+**Implementation:** a `HashTable` class with chaining: `set`, `get`, `delete`, `has`. Resizing is optional.
 
 **Repo output:**
 ```
-data_structures/hash_table/
-├── HashTable.py
+src/data-structures/hash-table/
+├── hash-table                 # implementation
 └── problems/
-    ├── first_unique_char.py
-    ├── group_anagrams.py           # re-solve using your own HashTable, for fun
-    └── longest_consecutive_sequence.py   # medium
+    ├── first-unique-char
+    ├── group-anagrams         # re-solve using your own HashTable, for fun
+    └── longest-consecutive-sequence   # medium
 ```
 
-**Block is done when:** you can narrate what happens on `map.set(key, value)` all the way down to a collision.
+**Block is done when:** you can narrate what happens when a key is inserted into the built-in hash map — all the way down to a collision.
 
 ---
 
@@ -149,14 +150,14 @@ data_structures/hash_table/
 
 The gateway to trees, graphs, backtracking, and DP. "Grokking Algorithms", ch. 3.
 
-**Theory:** base case + recursive case; the call stack; memoization.
+**Theory:** base case + recursive case; the call stack; your language's recursion depth limit and what happens when it's exceeded; memoization.
 
 **Repo output:**
 ```
-algorithms/recursion/
-├── fibonacci.py                    # naive and memoized versions side by side, with a comment on the difference
-├── pow.py                          # fast exponentiation
-└── sum_nested.py                   # sum of an arbitrarily nested array
+src/algorithms/recursion/
+├── fibonacci                  # naive and memoized versions side by side, with a comment on the difference
+├── pow                        # fast exponentiation
+└── sum-nested                 # sum of an arbitrarily nested array
 ```
 
 **Block is done when:** for any recursive function you can immediately name the base case and the stack depth.
@@ -165,18 +166,18 @@ algorithms/recursion/
 
 ## Block 8. Searching (~3–4 h)
 
-**Theory:** "Grokking Algorithms", ch. 1; boundary handling (`left <= right`), midpoint overflow (not an issue in JS, but know it), the "binary search on the answer" pattern.
+**Theory:** "Grokking Algorithms", ch. 1; boundary handling (`left <= right`), midpoint overflow (relevant in some languages, not in others — know it either way), the "binary search on the answer" pattern.
 
 **Repo output:**
 ```
-algorithms/searching/
-├── linear_search.py
-├── binary_search.py                # reference implementation, know it by heart
+src/algorithms/searching/
+├── linear-search
+├── binary-search              # reference implementation, know it by heart
 └── problems/
-    ├── search_insert_position.py
-    ├── find_min_rotated.py
-    ├── search_rotated.py
-    └── koko_bananas.py             # binary search on the answer
+    ├── search-insert-position
+    ├── find-min-rotated
+    ├── search-rotated
+    └── koko-bananas           # binary search on the answer
 ```
 
 **Block is done when:** you understand why koko-bananas is binary search even though nothing is sorted.
@@ -185,19 +186,19 @@ algorithms/searching/
 
 ## Block 9. Sorting (~4–5 h)
 
-**Theory:** "Grokking Algorithms", ch. 2 and 4. Complexities of each, stability, when quicksort degrades to O(n²), what V8 uses in `Array.prototype.sort`.
+**Theory:** "Grokking Algorithms", ch. 2 and 4. Complexities of each, stability, when quicksort degrades to O(n²), which algorithm your language's built-in sort uses.
 
 **Repo output:**
 ```
-algorithms/sorting/
-├── bubble_sort.py
-├── selection_sort.py
-├── insertion_sort.py
-├── merge_sort.py                   # the main one: implement carefully
-├── quick_sort.py
+src/algorithms/sorting/
+├── bubble-sort
+├── selection-sort
+├── insertion-sort
+├── merge-sort                 # the main one: implement carefully
+├── quick-sort
 └── problems/
-    ├── sort_colors.py              # Dutch national flag
-    └── merge_intervals.py
+    ├── sort-colors            # Dutch national flag
+    └── merge-intervals
 ```
 
 **Block is done when:** you can trace merge sort on paper for an 8-element array and name the complexity of every sort you wrote without looking.
@@ -208,20 +209,20 @@ algorithms/sorting/
 
 **Theory:** terminology (root, leaf, height, depth); the four traversals; the recursive mindset of "answer = f(left subtree, right subtree)".
 
-**Implementation:** `TreeNode<T>` + traversal functions (a tree is easier to keep as nodes + functions rather than a wrapper class).
+**Implementation:** a `TreeNode` class + traversal functions (a tree is easier to keep as nodes + functions rather than a wrapper class).
 
 **Repo output:**
 ```
-data_structures/binary_tree/
-├── TreeNode.py
-├── traversals.py                   # preorder, inorder, postorder (recursive), levelOrder (with a queue)
+src/data-structures/binary-tree/
+├── tree-node                  # node implementation
+├── traversals                 # preorder, inorder, postorder (recursive), level-order (with a queue)
 └── problems/
-    ├── max_depth.py
-    ├── invert_tree.py
-    ├── same_tree.py
-    ├── subtree_of_another.py
-    ├── level_order_traversal.py
-    └── diameter_of_tree.py
+    ├── max-depth
+    ├── invert-tree
+    ├── same-tree
+    ├── subtree-of-another
+    ├── level-order-traversal
+    └── diameter-of-tree
 ```
 
 **Block is done when:** you write any traversal without thinking; level-order uses your own queue from Block 3.
@@ -232,16 +233,16 @@ data_structures/binary_tree/
 
 **Theory:** the BST property; why in-order traversal yields sorted order; degeneration into a list and why balanced trees exist (AVL / red-black — concept only, no implementation).
 
-**Implementation:** `BST`: `insert`, `find`, `min`, `max`. `delete` is optional (understand how it works; writing it is not required).
+**Implementation:** a `BST` class: `insert`, `find`, `min`, `max`. `delete` is optional (understand how it works; writing it is not required).
 
 **Repo output:**
 ```
-data_structures/bst/
-├── BST.py
+src/data-structures/bst/
+├── bst                        # implementation
 └── problems/
-    ├── validate_bst.py
-    ├── kth_smallest.py
-    └── lowest_common_ancestor.py
+    ├── validate-bst
+    ├── kth-smallest
+    └── lowest-common-ancestor
 ```
 
 **Block is done when:** you solved validate-bst with the min/max bounds approach, not just via in-order, and understand both.
@@ -252,17 +253,17 @@ data_structures/bst/
 
 **Theory:** min/max-heap, array storage (parent/child index formulas), siftUp/siftDown, complexities. When a heap beats sorting: you only need the top K.
 
-**Implementation:** `MinHeap`: `insert`, `extractMin`, `peek`, `size`. One of the most useful implementations — JS has no built-in heap, so your own class will serve you in real tests too.
+**Implementation:** a `MinHeap` class: `insert`, `extract_min`, `peek`, `size`. Even if your language's standard library ships a heap — write your own for understanding, then learn the built-in one too (real tests will call for both).
 
 **Repo output:**
 ```
-data_structures/heap/
-├── MinHeap.py
+src/data-structures/heap/
+├── min-heap                   # implementation
 └── problems/
-    ├── last_stone_weight.py
-    ├── kth_largest_element.py
-    ├── k_closest_points.py
-    └── top_k_frequent.py           # re-solve using your own heap
+    ├── last-stone-weight
+    ├── kth-largest-element
+    ├── k-closest-points
+    └── top-k-frequent         # re-solve using your own heap
 ```
 
 **Block is done when:** you can derive the index formulas unaided and explain why insertion is O(log n).
@@ -275,22 +276,22 @@ The biggest topic — don't rush it. "Grokking Algorithms", ch. 6.
 
 **Theory:** adjacency list vs matrix; directed/weighted; a grid as a graph; BFS vs DFS — when to use which; topological sort (Kahn's algorithm); Dijkstra — idea only, implementation optional.
 
-**Implementation:** `Graph` on an adjacency list: `addVertex`, `addEdge`, plus standalone `bfs.py` and `dfs.py` as reference templates.
+**Implementation:** a `Graph` class on an adjacency list: `add_vertex`, `add_edge`, plus standalone `bfs` and `dfs` files as reference templates.
 
 **Repo output:**
 ```
-data_structures/graph/
-├── Graph.py
-├── bfs.py                          # reference template, memorize
-├── dfs.py                          # reference template, memorize
-├── topological_sort.py
+src/data-structures/graph/
+├── graph                      # implementation
+├── bfs                        # reference template, memorize
+├── dfs                        # reference template, memorize
+├── topological-sort
 └── problems/
-    ├── number_of_islands.py        # the key problem of the block
-    ├── max_area_of_island.py
-    ├── rotting_oranges.py          # level-by-level BFS
-    ├── clone_graph.py
-    ├── course_schedule.py          # topological sort
-    └── pacific_atlantic.py
+    ├── number-of-islands      # the key problem of the block
+    ├── max-area-of-island
+    ├── rotting-oranges        # level-by-level BFS
+    ├── clone-graph
+    ├── course-schedule        # topological sort
+    └── pacific-atlantic
 ```
 
 **Block is done when:** number-of-islands and course-schedule are solved on your own; you can justify the BFS vs DFS choice for every problem in the block.
@@ -303,14 +304,14 @@ data_structures/graph/
 
 **Repo output:**
 ```
-algorithms/greedy/
-├── max_subarray.py                 # Kadane
-└── jump_game.py
-algorithms/backtracking/
-├── subsets.py
-├── permutations.py
-├── combination_sum.py
-└── word_search.py
+src/algorithms/greedy/
+├── max-subarray               # Kadane
+└── jump-game
+src/algorithms/backtracking/
+├── subsets
+├── permutations
+├── combination-sum
+└── word-search
 ```
 
 **Block is done when:** you write the backtracking template from memory and understand why the undo step exists.
@@ -325,15 +326,15 @@ The hardest part — going slowly is normal. "Grokking Algorithms", ch. 9 + Neet
 
 **Repo output:**
 ```
-algorithms/dynamic_programming/
-├── climbing_stairs.py
-├── min_cost_climbing_stairs.py
-├── house_robber.py
-├── house_robber_2.py
-├── coin_change.py
-├── longest_increasing_subsequence.py
-├── unique_paths.py                 # 2-D
-└── longest_common_subsequence.py   # 2-D
+src/algorithms/dynamic-programming/
+├── climbing-stairs
+├── min-cost-climbing-stairs
+├── house-robber
+├── house-robber-2
+├── coin-change
+├── longest-increasing-subsequence
+├── unique-paths               # 2-D
+└── longest-common-subsequence # 2-D
 ```
 
 **Block is done when:** for coin-change and LCS you can state the DP state and transition in words without looking at a solution.
