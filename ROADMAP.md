@@ -346,10 +346,8 @@ src/algorithms/dynamic-programming/
 - [ ] Re-solve from scratch every problem marked "solved with help"
 - [ ] 3–4 mixed sets of 4–5 random problems from NeetCode 150 — without knowing the topic
 - [ ] 2–3 timed simulations: 3–4 problems in 90 minutes, no googling
-- [ ] Finish the README: one line per structure — "what it is and when to use it" — with links to the files
 
-**The checklist is done when:** you solve 3 out of 4 in a 90-minute simulation, and the README reads like your personal cheat sheet.
-
+**The checklist is done when:** you solve 3 out of 4 in a 90-minute simulation.
 ---
 
 ## Totals
@@ -361,5 +359,3 @@ src/algorithms/dynamic-programming/
 | Blocks 13–15 (graphs, greedy/backtracking, DP) | ~18–23 |
 | Block 16 (final) | ~5–7 |
 | **Total** | **~65–83** |
-
-If you're running out of time: the mandatory core is Blocks 1, 2, 4, 6, 7, 8, 10, 13, 15. Compress first: Block 5 (doubly linked list — keep only LRU cache), Block 9 (implement merge sort only), Block 11 (BST without delete), Block 14 (2 problems each instead of 4).
