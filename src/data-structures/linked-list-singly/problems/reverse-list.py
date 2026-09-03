@@ -18,9 +18,21 @@ class Solution:
             curr = next_note
         return prev
 
+    def recursively(self, head: ListNode):
+        if not head.next:
+            return head
+
+        new_head = self.recursively(head.next)
+
+        next_note = head.next
+        next_note.next = head
+        head.next = None
+
+        return new_head
+
     def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
         if not head:
             return None
         
-        return self.iteratively(head)
+        return self.recursively(head)
         
