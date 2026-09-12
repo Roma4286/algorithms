@@ -3,7 +3,7 @@ from typing import TypeVar, Generic
 
 T = TypeVar('T')
 
-@dataclass
+@dataclass(eq=False)
 class Note(Generic[T]):
     data: T
     next: Note | None = None
