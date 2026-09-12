@@ -1,4 +1,4 @@
-# https://leetcode.com/problems/lru-cache/
+# https://leetcode.com/problems/lru-cache/submissions/2139747157/
 from dataclasses import dataclass
 
 @dataclass(eq=False)
@@ -92,7 +92,99 @@ class LRUCache:
 
         self.cache[key] = [value, new_node]
 
-# Your LRUCache object will be instantiated and called as such:
-# obj = LRUCache(capacity)
-# param_1 = obj.get(key)
-# obj.put(key,value)
+
+
+# --------------------------------------------------------------------------------
+
+from dataclasses import dataclass
+
+@dataclass(eq=False)
+class Node():
+    data: int
+    next: Node | None = None
+    prev: Node | None = None
+
+class DoublyLinkedList(): 
+
+    def __init__(self) -> None:
+        self.head: Node | None = None
+        self.end: Node | None = None
+
+    def push_back(self, data: int) -> Node:
+        if not self.end:
+            self.head = self.end = Node(data=data)
+            return self.head
+
+        new_node = Node(data=data, prev=self.end)
+        self.end.next = new_node
+        self.end = new_node
+
+        return self.end
+
+    def pop_front(self) -> None | int:
+        if not self.head:
+            return None
+
+        if self.head is self.end:
+            result = self.head.data
+
+            self.head = self.end = None
+
+            return result
+
+        result = self.head.data
+
+        self.head = self.head.next
+
+        self.head.prev = None
+
+        return result
+
+    def move_to_back(self, node: Node) -> bool:
+        if node is self.end:
+            return True
+        
+        node.next.prev = node.prev
+        if node is self.head:
+            self.head = node.next
+        else:
+            node.prev.next = node.next
+        
+        node.prev = self.end
+        node.next = None
+        self.end.next = node
+        self.end = node
+
+        return True
+
+class LRUCache:
+
+    def __init__(self, capacity: int):
+        self.cache = {}
+        self.capacity = capacity
+
+        self.doubly_linked_list = DoublyLinkedList()
+        
+
+    def get(self, key: int) -> int:
+        if key not in self.cache:
+            return -1
+        result = self.cache[key]
+
+        self.doubly_linked_list.move_to_back(result[1])
+
+        return result[0]
+
+    def put(self, key: int, value: int) -> None:
+
+        if key in self.cache:
+            self.doubly_linked_list.move_to_back(self.cache[key][1])
+            node = self.cache[key][1]
+        else:
+            node = self.doubly_linked_list.push_back(data=key)
+
+            if self.capacity == len(self.cache):
+                pop_key = self.doubly_linked_list.pop_front()
+                del self.cache[pop_key]
+
+        self.cache[key] = [value, node]
