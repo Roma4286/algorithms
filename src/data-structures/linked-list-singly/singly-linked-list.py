@@ -4,29 +4,29 @@ from typing import TypeVar, Generic
 T = TypeVar('T')
 
 @dataclass(eq=False)
-class Note(Generic[T]):
+class Node(Generic[T]):
     data: T
-    next: Note | None = None
+    next: Node | None = None
     
 class SinglyLinkedList(Generic[T]):
     def __init__(self) -> None:
-        self.head: Note | None = None
+        self.head: Node | None = None
 
     def push_back(self, data: T) -> bool:
         if not self.head:
-            self.head = Note(data=data)
+            self.head = Node(data=data)
         else:
             note = self._find_last_note()
 
-            new_note = Note(data=data)
+            new_note = Node(data=data)
             note.next = new_note
         return True
 
     def push_front(self, data: T) -> bool:
         if not self.head:
-            self.head = Note(data=data)
+            self.head = Node(data=data)
         else:
-            new_note = Note(data=data, next=self.head)
+            new_note = Node(data=data, next=self.head)
             self.head = new_note
 
         return True
@@ -47,7 +47,7 @@ class SinglyLinkedList(Generic[T]):
         note = self.head
 
         if index == 1:
-            new_note = Note(data=data, next=self.head)
+            new_note = Node(data=data, next=self.head)
             self.head = new_note
             return True
 
@@ -58,7 +58,7 @@ class SinglyLinkedList(Generic[T]):
             index -= 1
 
         next_note = note.next
-        new_note = Note(data=data, next=next_note)
+        new_note = Node(data=data, next=next_note)
         note.next = new_note
         return True
 
