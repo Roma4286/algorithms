@@ -11,71 +11,66 @@ class Node(Generic[T]):
 
 class HashTable(Generic[T]):
     def __init__(self, table_size: int = 100):
-        self.list_of_hash = [None] * table_size
+        self.table: list[Node | None] = [None] * table_size
         self.table_size = table_size
+        self.cellCount = 0
 
     def set(self, key: int | str, data: T) -> bool:
-        hash_value = self._hash_function(key)
-        if self.has(key):
-            head: Node = self.list_of_hash[hash_value]
-            while head.key != key:
-                head = head.next
+        _, node = self._find_prev_and_curr_node(key)
+        if node:
 
-            head.data = data
+            node.data = data
 
             return True
+
+        hash_value = self._hash_function(key)
+
+        self.cellCount += 1
+        if self.cellCount / self.table_size >= 0.75:
+            self._rehashing()
 
         new_node = Node(key=key, data=data)
-        if self.list_of_hash[hash_value] is None:
-            self.list_of_hash[hash_value] = new_node
+        if self.table[hash_value] is None:
+            self.table[hash_value] = new_node
+
             return True
 
-        head: Node = self.list_of_hash[hash_value]
-        while head.next is not None:
-            head = head.next
+        head: Node = self.table[hash_value]
+        new_node.next = head
+        self.table[hash_value] = new_node
 
-        head.next = new_node
+        
         return True
 
     def get(self, key: int | str) -> T:
-        if not self.has(key):
+        _, node = self._find_prev_and_curr_node(key)
+        if not node:
             raise KeyError("There is no entry with this key")
 
-        hash_value = self._hash_function(key)
-
-        head: Node = self.list_of_hash[hash_value]
-        while head.key != key:
-            head = head.next
-
-        return head.data
+        return node.data
 
     def delete(self, key: int | str) -> bool:
-        if not self.has(key):
+        prev_node, node = self._find_prev_and_curr_node(key)
+        if not node:
             raise KeyError("There is no entry with this key")
-
+        
         hash_value = self._hash_function(key)
 
-        head: Node = self.list_of_hash[hash_value]
-        if head.key == key:
-            self.list_of_hash[hash_value] = head.next
+        if not prev_node:
+            self.table[hash_value] = node.next
+            self.cellCount -= 1
             return True
-        
-        while head.next.key != key:
-            head = head.next
 
-        head.next = head.next.next
+        prev_node.next = prev_node.next.next
+
+        self.cellCount -= 1
+
         return True        
         
     def has(self, key: int | str) -> bool:
-        hash_value = self._hash_function(key)
-        if self.list_of_hash[hash_value] is None:
-            return False
+        _, node = self._find_prev_and_curr_node(key)
 
-        head: Node = self.list_of_hash[hash_value]
-        while head is not None and head.key != key:
-            head = head.next
-
-        if head is None:
+        if node is None:
             return False
 
         return True
@@ -96,3 +91,36 @@ class HashTable(Generic[T]):
             h = (h * p + ord(char)) % self.table_size
 
         return h
+
+    def _rehashing(self):
+        self.table_size = self.table_size * 2
+        old_table = self.table
+        self.table = [None] * self.table_size
+        self.cellCount = 0
+        for i in old_table:
+            if i:
+                head: Node = i
+                while head:
+                    key = head.key
+                    data = head.data
+
+                    self.set(key, data)
+
+                    head = head.next
+
+    def _find_prev_and_curr_node(self, key: int | str) -> tuple[Node, Node] | tuple[None, Node] | tuple[None, None]:
+        hash_value = self._hash_function(key)
+        if self.table[hash_value] is None:
+            return None, None
+
+        head: Node = self.table[hash_value]
+        if head.key == key:
+            return None, head
+
+        while head.next is not None and head.next.key != key:
+            head = head.next
+
+        if head.next is None:
+            return None, None
+
+        return head, head.next
