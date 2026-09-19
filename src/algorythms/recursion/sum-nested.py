@@ -11,4 +11,27 @@ def solution_for_339_leetcode(n: list, depth: int = 1) -> int:
 
     return result
 
+
+def solution_for_364_leetcode(n: list) -> int:
+    sum_arr = []
+
+    def func(n: list, depth: int = 0) -> int:
+        for i in n:
+            if isinstance(i, list):
+                func(i, depth+1)
+            else:
+                while depth > len(sum_arr) - 1:
+                    sum_arr.append(0)
+                sum_arr[depth] += i
+
+    func(n)
+
+    result = 0
+    for i in range(len(sum_arr)):
+        result += (len(sum_arr) - i) * sum_arr[i]
+
+    return result
+    
+
 print(solution_for_339_leetcode(arr))
+print(solution_for_364_leetcode(arr))
