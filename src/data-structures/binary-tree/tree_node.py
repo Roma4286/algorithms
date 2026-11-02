@@ -7,7 +7,7 @@ class TreeNode():
     left: TreeNode | None = None
     right: TreeNode | None = None    
 
-def create_binary_tree(values: list[int]) -> TreeNode:
+def create_binary_tree(values: list[int | None]) -> TreeNode:
     root = TreeNode(val=values[0])
     queue = deque()
     
